@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Core extends JavaPlugin implements Listener {
 	
-	private static Plugin pootis;
+	private static Plugin plugin;
 	
 	
 	public void onEnable() {
