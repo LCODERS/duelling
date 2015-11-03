@@ -12,5 +12,6 @@ public class Core extends JavaPlugin implements Listener {
 	public void onEnable() {
 		Bukkit.getConsoleSender().sendMessage("Duel plugin made by _ItzMarcus_ and Dempsey.");
 	}
+	//Hello dempsey
 
 }
