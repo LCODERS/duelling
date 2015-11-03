@@ -7,12 +7,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Core extends JavaPlugin implements Listener {
 	
-	private static Plugin pootis;
+	private static Plugin plugin;
 	
 	
 	public void onEnable() {
 		Bukkit.getConsoleSender().sendMessage("Duel plugin made by _ItzMarcus_ and Dempsey.");
 	}
-	//Hello dempsey
 
 }
