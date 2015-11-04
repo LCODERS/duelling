@@ -51,7 +51,6 @@ public class Arena {
 	
 	public static ArrayList<Location> protectedBlocks(){
 		int mix = 0,max = 0,miy = 0,may = 0,miz = 0,maz = 0;
-		
 		if(b1.getBlockX() < b2.getBlockX()){
 			mix = b1.getBlockX();
 			max = b2.getBlockX();
@@ -59,7 +58,6 @@ public class Arena {
 			mix = b2.getBlockX();
 			max = b1.getBlockX();
 		}
-		
 		if(b1.getBlockX() < b2.getBlockX()){
 			mix = b1.getBlockY();
 			max = b2.getBlockY();
@@ -67,7 +65,6 @@ public class Arena {
 			mix = b2.getBlockY();
 			max = b1.getBlockY();
 		}
-		
 		if(b1.getBlockX() < b2.getBlockX()){
 			mix = b1.getBlockZ();
 			max = b2.getBlockZ();
@@ -75,9 +72,7 @@ public class Arena {
 			mix = b2.getBlockZ();
 			max = b1.getBlockZ();
 		}
-		
 		ArrayList<Location> b = new ArrayList<Location>();
-		
 		for(int x = mix; x<=max;x++){
 			for(int y = miy; y<=may;y++){
 				for(int z = miz; z<=maz;z++){
@@ -94,18 +89,18 @@ public class Arena {
 		conf.set("arenas."+id+".sp1.x", sp1.getX());
 		conf.set("arenas."+id+".sp1.y", sp1.getY());
 		conf.set("arenas."+id+".sp1.z", sp1.getZ());
-		conf.set("arenas."+id+".sp2.world", sp1.getWorld());
-		conf.set("arenas."+id+".sp2.x", sp1.getX());
-		conf.set("arenas."+id+".sp2.y", sp1.getY());
-		conf.set("arenas."+id+".sp2.z", sp1.getZ());
-		conf.set("arenas."+id+".b1.world", sp1.getWorld());
-		conf.set("arenas."+id+".b1.x", sp1.getX());
-		conf.set("arenas."+id+".b1.y", sp1.getY());
-		conf.set("arenas."+id+".b1.z", sp1.getZ());
-		conf.set("arenas."+id+".b2.world", sp1.getWorld());
-		conf.set("arenas."+id+".b2.x", sp1.getX());
-		conf.set("arenas."+id+".b2.y", sp1.getY());
-		conf.set("arenas."+id+".b2.z", sp1.getZ());
+		conf.set("arenas."+id+".sp2.world", sp2.getWorld());
+		conf.set("arenas."+id+".sp2.x", sp2.getX());
+		conf.set("arenas."+id+".sp2.y", sp2.getY());
+		conf.set("arenas."+id+".sp2.z", sp2.getZ());
+		conf.set("arenas."+id+".b1.world", b1.getWorld());
+		conf.set("arenas."+id+".b1.x", b1.getX());
+		conf.set("arenas."+id+".b1.y", b1.getY());
+		conf.set("arenas."+id+".b1.z", b1.getZ());
+		conf.set("arenas."+id+".b2.world", b2.getWorld());
+		conf.set("arenas."+id+".b2.x", b2.getX());
+		conf.set("arenas."+id+".b2.y", b2.getY());
+		conf.set("arenas."+id+".b2.z", b2.getZ());
 		try{
 			conf.save(file);
 		} catch(Exception e){

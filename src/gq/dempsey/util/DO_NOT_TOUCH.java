@@ -10,7 +10,6 @@ public class DO_NOT_TOUCH {
 
 	// KIT
 	
-	
 	private static ItemStack helmet = new ItemStack(Material.IRON_HELMET,1);
 	private static ItemStack chestplate = new ItemStack(Material.IRON_CHESTPLATE,1);
 	private static ItemStack pants = new ItemStack(Material.IRON_LEGGINGS,1);
