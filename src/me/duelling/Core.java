@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import me.duelling.listeners.CreateProfile;
 import me.duelling.listeners.JoinMessage;
+import me.duelling.utils.MotdManager;
 import me.duelling.utils.Profile;
 
 import org.bukkit.Bukkit;
@@ -22,9 +23,11 @@ public class Core extends JavaPlugin implements Listener {
 	public void onEnable() {
 		try {
 			Arena.setup(this);
+			MotdManager.setup(this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		pm.registerEvents(new Profile(), this);
 		pm.registerEvents(new CreateProfile(), this);
