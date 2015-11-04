@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import me.duelling.listeners.CreateProfile;
 import me.duelling.listeners.JoinMessage;
+import me.duelling.utils.ChatFormat;
+import me.duelling.utils.ColoredNames;
 import me.duelling.utils.MotdManager;
 import me.duelling.utils.Profile;
 
@@ -32,6 +34,9 @@ public class Core extends JavaPlugin implements Listener {
 		pm.registerEvents(new Profile(), this);
 		pm.registerEvents(new CreateProfile(), this);
 		pm.registerEvents(new JoinMessage(), this);
+		pm.registerEvents(new MotdManager(), this);
+		pm.registerEvents(new ColoredNames(), this);
+		pm.registerEvents(new ChatFormat(), this);
 		saveDefaultConfig();
 		Bukkit.getConsoleSender().sendMessage("Duel plugin made by _ItzMarcus_ and Dempsey.");
 	}
