@@ -29,6 +29,7 @@ public class Core extends JavaPlugin implements Listener {
 		pm.registerEvents(new Profile(), this);
 		pm.registerEvents(new CreateProfile(), this);
 		pm.registerEvents(new JoinMessage(), this);
+		saveDefaultConfig();
 		Bukkit.getConsoleSender().sendMessage("Duel plugin made by _ItzMarcus_ and Dempsey.");
 	}
 
