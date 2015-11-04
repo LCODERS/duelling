@@ -22,5 +22,4 @@ public class JoinMessage implements Listener {
 			p.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
 		}
 	}
-
 }
