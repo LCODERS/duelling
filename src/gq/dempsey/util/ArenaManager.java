@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import me.duelling.Core;
 
+import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 
@@ -20,6 +21,16 @@ public class ArenaManager {
 			list.add(a);
 		}
 		return list;
+	}
+	
+	public static Arena createArena(int id, Location b1, Location b2, Location sp1, Location sp2){
+		Arena a = new Arena(id,b1,b2,sp1,sp2);
+		a.save();
+		return a;
+	}
+	
+	public static void deleteArena(int id){
+		Arena.getById(id).delete();
 	}
 	
 }

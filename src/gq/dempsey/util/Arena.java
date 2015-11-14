@@ -28,7 +28,7 @@ public class Arena {
 		return occupied;
 	}
 	
-	public static void setOccupied(boolean b){
+	public void setOccupied(boolean b){
 		occupied = b;
 	}
 	
@@ -38,6 +38,15 @@ public class Arena {
 	
 	public static Arena getById(int id){
 		return new Arena(id, new Location(Bukkit.getWorld(conf.getString("arenas."+id+".b1.world")),conf.getInt("arenas."+id+".b1.x"),conf.getInt("arenas."+id+".b1.y"), conf.getInt("arenas."+id+".b1.z")),new Location(Bukkit.getWorld(conf.getString("arenas."+id+".b2.world")),conf.getInt("arenas."+id+".b2.x"),conf.getInt("arenas."+id+".b2.y"), conf.getInt("arenas."+id+".b2.z")), new Location(Bukkit.getWorld(conf.getString("arenas."+id+".sp1.world")),conf.getInt("arenas."+id+".sp1.x"),conf.getInt("arenas."+id+".sp1.y"), conf.getInt("arenas."+id+".sp1.z")), new Location(Bukkit.getWorld(conf.getString("arenas."+id+".sp2.world")),conf.getInt("arenas."+id+".sp2.x"),conf.getInt("arenas."+id+".sp2.y"), conf.getInt("arenas."+id+".sp2.z")));
+	}
+	
+	public void delete(){
+		conf.set("arenas."+id, null);
+		try{
+			conf.save(file);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	public static void setup(Plugin p) throws IOException{
