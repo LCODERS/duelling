@@ -3,6 +3,7 @@ package gq.dempsey.util;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -21,8 +22,17 @@ public class Arena {
 	private static ArenaState dstate = ArenaState.FREE;
 	private static File file;
 	private static FileConfiguration conf;
+	private static boolean occupied = false;
 	
-	public static int getId(){
+	public boolean isOccupied(){
+		return occupied;
+	}
+	
+	public static void setOccupied(boolean b){
+		occupied = b;
+	}
+	
+	public int getId(){
 		return id;
 	}
 	
@@ -41,6 +51,26 @@ public class Arena {
 		conf = YamlConfiguration.loadConfiguration(file);
 	}
 	
+	public void occupy(ArrayList<UUID> id){
+		int turncounter = 0;
+		for(UUID uid : id){
+			Player p = Bukkit.getPlayer(uid);
+			turncounter++;
+			if(!invEmpty(p)){
+				p.sendMessage(ChatColor.RED + "Your inventory has to be empty to join it!");
+			}else{
+				if(turncounter == 0){
+					p.teleport(sp1);
+				}else{
+					p.teleport(sp2);
+					return;
+				}
+			}
+		}
+		
+		occupied = true;
+	}
+	
 	public Arena(int id, Location b1, Location b2, Location sp1, Location sp2){
 		Arena.sp1 = sp1;
 		Arena.sp2 = sp2;
@@ -49,7 +79,7 @@ public class Arena {
 		Arena.id = id;
 	}
 	
-	public static ArrayList<Location> protectedBlocks(){
+	public ArrayList<Location> protectedBlocks(){
 		int mix = 0,max = 0,miy = 0,may = 0,miz = 0,maz = 0;
 		if(b1.getBlockX() < b2.getBlockX()){
 			mix = b1.getBlockX();
@@ -84,7 +114,7 @@ public class Arena {
 		return b;
 	}
 	
-	public static synchronized void save(){
+	public synchronized void save(){
 		conf.set("arenas."+id+".sp1.world", sp1.getWorld());
 		conf.set("arenas."+id+".sp1.x", sp1.getX());
 		conf.set("arenas."+id+".sp1.y", sp1.getY());
@@ -108,11 +138,11 @@ public class Arena {
 		}
 	}
 	
-	public static ArenaState getState(){
+	public ArenaState getState(){
 		return dstate;
 	}
 	
-	public static void setState(ArenaState state){
+	public void setState(ArenaState state){
 		dstate = state;
 	}
 	
@@ -139,12 +169,13 @@ public class Arena {
 		}
 	}
 	
-	public static void resetArena(){
+	public void resetArena(){
 		for(Player pls : players){
 			pls.setHealth(0.0D);
 		}
 		players.clear();
 		setState(ArenaState.FREE);
+		occupied = false;
 	}
 	
 }
